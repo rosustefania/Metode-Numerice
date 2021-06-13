@@ -1,0 +1,46 @@
+- PART 1
+	- generate_probabilities_system(rows):
+		- mi-am construit o alta matrice M in care am adaugat labirintul, lucru ce ma va 
+		ajuta sa vad pozitia urmatoare unde se poate duce soricelul;
+		- am construit matricea M astfel: am pus mai intai elementele de pe contur, iar 
+		mai apoi, linie cu linie am adaugat elementele din mijloc;
+		- am observat ca elementele de pe conturul piramidei au 5 iesiri, respectiv 4 
+		pentru cele aflate in cele 3 colturi,iar ce ramane vor avea cate 6 iesiri;
+		- mai apoi am pus -1 in A pe pozitiile vecine unde se poate ajunge;
+		- am construit vectorul termenilor liberi, b;
+
+	- matrix_to_csr(A):
+		- am construit values si colind;
+		- pentru rowptr am parcurs fiecare linie, iar cand am dat de primul element nenul 
+		am adaugat numarul pozitiei din values; 
+
+	- Jacobi_factorization(A, b):
+		- am construit matricea de iteratie Jacobi si vectorul de iteratie Jacobi;
+
+	- Jacobi_sparse(G_values, G_colind, G_rowptr, c, tol):
+		- cu ajutorul functiei csr_multiplication, am construit matricea de iteratie Jacobi
+	 	densa, si am aplicat algoritmul Jacobi; 
+
+- PART 2
+	- clustering_pc(points, NC):
+		- initializez clusterele, si adaug punctele in clusterele corespunzatoare;
+		- initializez fiecare centroid cu media punctelor din cluster;
+		- creez noi liste in care pe prima pozitie adaug centroidul si adaug punctele in 
+		lista celui mai apropiat centroid;
+		- recalculez centroizii;
+		- repet ultimii doi pasi pana in momentul in care centrozii nu se mai schimba;
+
+	- compute_cost_pc(points, centroids):
+ 		- creez lista pentru fiecare centroid si adaug punctele;
+		- calculez costul parcurgand fiecare lista;
+
+- PART 3	
+	- rgbHistogram(path_to_image, count_bins):
+		- citesc imaginea, stabilesc intervalele;
+		- pentru fiecare matrice in parte( rosu, verde si albastru) retin numarul de pixeli
+		 pentru fiecare interval intr-un vector pe care apoi il adaug in sol;
+
+	- hsvHistogram(path_to_image, count_bins):
+		- citesc imaginea, stabilesc intervalele si o transform cu functia rgbhsv(A)  ;
+		- urmez ultimul pas descris la rgbHistogram pentru matricile H, S si V.  
+		
